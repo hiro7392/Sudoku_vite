@@ -3,12 +3,12 @@ import { useState } from "react";
 
 const blockCss:React.CSSProperties={
     background:'white',
-    width:'100px',
-    height:'100px',
+    width:100,
+    height:100,
 }
 export type Mass={
     num:number;
-    isFixed:false;
+    isFixed:boolean;
 }
 export const Block=()=>{
     const [num,setNum]=useState(0);

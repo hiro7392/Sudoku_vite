@@ -11,52 +11,76 @@ const massCss:React.CSSProperties={
     background:'white',
     color:'blue',
     fontSize:'20px',
-    margin:"0.01rem",
-
-    padding:"0.3rem",
-    width: '0.3rem',
+    width:'0.5rem',
+    padding:"0.5rem",
+    borderWidth: '2px',
+    borderColor: 'black',
+    borderStyle: 'solid',
 }
 
 const massFixedCss:React.CSSProperties={
     background:'white',
-    color:'grey',
+    color:'black',
     fontSize:'20px',
-    margin:"0.01rem",
-    padding:"0.3rem",
-    width: '0.3rem',
+    width:'0.5rem',
+    height:'1.5rem',
+    padding:"0.5rem",
+    borderWidth: '2px',
+    borderColor: 'red',
+    borderStyle: 'solid',
+}
+const tableCss:React.CSSProperties={
+    padding:'0.5rem',
+    backgroundColor:'white',
 }
 
 export const Board=()=>{
-    const [blocks,setBlocks]=useState<Mass[]>([]);
+    const [blocks,setBlocks]=useState<Mass[][]>([]);
+    const numsPercols:number=9;
+    const css:React.CSSProperties=massCss;
     useEffect(()=>{
         setBlocks([]);
         let cnt:number=0;
-        for(let i=0;i<81;i++){
-            const tmpMass:Mass={
-                num:getRandomNum(),
-                isFixed:getRandomNum()%2===0,
+        for(let i=0;i<9;i++){
+            let tmp:Mass[]=[]
+            //ランダムにとりあえず生成
+            for(let k=0;k<9;k++){
+                const tmpMass:Mass={
+                    num:getRandomNum(),
+                    isFixed:getRandomNum()%2===0,
+                }
+                tmp=[...tmp,tmpMass];
             }
-            setBlocks((prev)=>([...prev,tmpMass]))
+            setBlocks((prev)=>([...prev,tmp]));
         }
     },[])
     return(
         <>
-            {
-                blocks.map((block,index)=>{
-                    let css:React.CSSProperties=massCss;
-                    css=((block.num%2)==0)? massCss:massFixedCss;
-                    if(index%9===8){
+            <table style={tableCss}>
+                <tbody>
+                    {blocks.map((col,i)=>{
                         return(
-                            <a style={css}>{block.num}<br></br></a>
-                        )
-                    }
-                    else{
-                        return(
-                            <a style={css}>{block.num}</a>
-                        )
-                    }
-                })
-            }
+                            <tr key={i}>
+                                { col.map((block:Mass,index)=>{
+                                    if(block===undefined){
+                                        return(<td key={index+numsPercols*i}></td>);
+                                    }else{
+                                        return(
+                                        <td key={index+numsPercols*i}>
+                                            {
+                                                block.isFixed?<div style={css}>{block.num}</div>
+                                                :<div style={massFixedCss}>{block.num}</div>
+                                            }
+                                            
+                                        </td>
+                                        );
+                                    }
+                                })}
+                            </tr>
+                        );})
+                    }   
+                </tbody>
+            </table>
         </>
     )
 };

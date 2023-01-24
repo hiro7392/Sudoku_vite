@@ -3,8 +3,6 @@ import { useState } from "react";
 
 const blockCss:React.CSSProperties={
     background:'white',
-    width:100,
-    height:100,
 }
 export type Mass={
     num:number;

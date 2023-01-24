@@ -12,10 +12,11 @@ const massCss:React.CSSProperties={
     color:'blue',
     fontSize:'20px',
     width:'0.5rem',
-    padding:"0.5rem",
-    borderWidth: '2px',
+    margin:'0px',
+    padding:"0.5rem 0.7rem 0.5rem 0.7rem",
+    borderWidth: '0.5px',
     borderColor: 'black',
-    borderStyle: 'solid',
+    borderStyle: 'dashed',
 }
 
 const massFixedCss:React.CSSProperties={
@@ -24,14 +25,16 @@ const massFixedCss:React.CSSProperties={
     fontSize:'20px',
     width:'0.5rem',
     height:'1.5rem',
-    padding:"0.5rem",
-    borderWidth: '2px',
+    margin:'0px',
+    padding:"0.5rem 0.7rem 0.5rem 0.7rem",
+    borderWidth: '0.5px',
     borderColor: 'red',
-    borderStyle: 'solid',
+    borderStyle: 'dashed',
 }
 const tableCss:React.CSSProperties={
     padding:'0.5rem',
     backgroundColor:'white',
+    tableLayout: 'fixed',
 }
 
 export const Board=()=>{
@@ -60,7 +63,11 @@ export const Board=()=>{
                 <tbody>
                     {blocks.map((col,i)=>{
                         return(
-                            <tr key={i}>
+                            <tr key={i} 
+                                style={{border:"3px",
+                                borderStyle:"solid",
+                                borderWidth: '0.1px',}}
+                            >
                                 { col.map((block:Mass,index)=>{
                                     if(block===undefined){
                                         return(<td key={index+numsPercols*i}></td>);

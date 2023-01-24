@@ -2,6 +2,8 @@ import { useState } from 'react'
 import reactLogo from './assets/react.svg'
 import './App.css'
 import { Board } from './Board'
+import { Grid3x3} from './Grid3x3'
+import { LargeGrid3x3 } from './LargeGrid3x3'
 
 function App() {
   const [count, setCount] = useState(0)
@@ -18,6 +20,7 @@ function App() {
       </div>
       {/* <h1>Vite + React</h1> */}
       <Board/>
+      <LargeGrid3x3/>
       {/* <div className="card">
         <button onClick={() => setCount((count) => count + 1)}>
           count is {count}

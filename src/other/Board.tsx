@@ -21,7 +21,7 @@ const massCss:React.CSSProperties={
 
 const massFixedCss:React.CSSProperties={
     background:'white',
-    color:'black',
+    color:'red',
     fontSize:'20px',
     width:'0.5rem',
     height:'1.5rem',
@@ -66,7 +66,9 @@ export const Board=()=>{
                             <tr key={i} 
                                 style={{border:"3px",
                                 borderStyle:"solid",
-                                borderWidth: '0.1px',}}
+                                borderWidth: '0.1px',
+                                backgroundColor:'blue',
+                            }}
                             >
                                 { col.map((block:Mass,index)=>{
                                     if(block===undefined){
@@ -84,8 +86,8 @@ export const Board=()=>{
                                     }
                                 })}
                             </tr>
-                        );})
-                    }   
+                        );
+                    })}   
                 </tbody>
             </table>
         </>

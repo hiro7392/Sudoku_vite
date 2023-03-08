@@ -1,16 +1,16 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import './App.css'
-import { Board } from './Board'
-import { Grid3x3} from './Grid3x3'
-import { LargeGrid3x3 } from './LargeGrid3x3'
+import { useState } from "react"
+import reactLogo from "./assets/react.svg"
+import "./App.css"
+import { Board } from "./Board"
+import { Grid3x3 } from "./Grid3x3"
+import { LargeGrid3x3 } from "./LargeGrid3x3"
 
 function App() {
-  const [count, setCount] = useState(0)
+    const [count, setCount] = useState(0)
 
-  return (
-    <div className="App">
-      {/* <div>
+    return (
+        <div className="App">
+            {/* <div>
         <a href="https://vitejs.dev" target="_blank">
           <img src="/vite.svg" className="logo" alt="Vite logo" />
         </a>
@@ -18,8 +18,8 @@ function App() {
           <img src={reactLogo} className="logo react" alt="React logo" />
         </a>
       </div> */}
-      {/* <h1>Vite + React</h1> */}
-      {/* <div className="card">
+            {/* <h1>Vite + React</h1> */}
+            {/* <div className="card">
         <button onClick={() => setCount((count) => count + 1)}>
           count is {count}
         </button>
@@ -28,15 +28,15 @@ function App() {
         </p>
       </div>
        */}
-      {/* <p className="read-the-docs">
+            {/* <p className="read-the-docs">
         Click on the Vite and React logos to learn more
       </p> */}
-      <div> 
-        数独
-        <LargeGrid3x3/>
-      </div>
-    </div>
-  )
+            <div>
+                数独
+                <LargeGrid3x3 />
+            </div>
+        </div>
+    )
 }
 
 export default App

@@ -26,8 +26,8 @@ const massFixedCss:React.CSSProperties={
     height:'1.5rem',
     margin:'0px',
     padding:"0.5rem 0.7rem 0.5rem 0.7rem",
-    borderWidth: '0px',
-    borderColor: 'red',
+    borderWidth: '0.1px',
+    borderColor: 'grey',
     borderStyle: 'dashed',
 }
 export const row3=(num:number)=>{
@@ -40,11 +40,9 @@ export const row3=(num:number)=>{
 export const Grid3x3=()=>{
     const [gridNums,setGridNums]=useState<number[]>([...Array<number>(9)].map(()=>0));//  初期値は全て-1
     useEffect(()=>{
-        
         const initialNums:number[]=[...Array<number>(9)].map(()=>-1);
-        
-        
     },[]);
+    //  各マスの表示,埋まっていないマスは空白にする
     const row3=(num:number)=>{
         return(
             <div className="item" style={massFixedCss}>
@@ -52,6 +50,9 @@ export const Grid3x3=()=>{
             </div>
         );
     };
+    
+
+    gridNums[3]=5;
     return(
         <div style={{ borderWidth:"0.3px",
         borderStyle:"solid",}}>
@@ -72,4 +73,22 @@ export const Grid3x3=()=>{
             </div>
         </div>
     );
+}
+//  3x3で被りがあればfalseを返す    
+export const checkGridNum=(nums:number[])=>{
+    let result=true;
+    if(nums.length!==9)result=false;    //そもそも長さが違う
+    
+    //  被りがないか判定する
+    let initialState:boolean[]=[...Array<boolean>(10)].map(()=>false);
+    nums.map((n,index)=>{
+        if(n===0)result=false;
+        
+        if(!initialState[n]){
+            initialState[n]=true;
+        }else{
+            result=true;
+        }
+    });
+    return result;
 }

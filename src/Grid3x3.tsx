@@ -52,7 +52,7 @@ export const Grid3x3=()=>{
     };
     
 
-    gridNums[3]=5;
+    checkGridNum(gridNums);
     return(
         <div style={{ borderWidth:"0.3px",
         borderStyle:"solid",}}>
@@ -80,14 +80,15 @@ export const checkGridNum=(nums:number[])=>{
     if(nums.length!==9)result=false;    //そもそも長さが違う
     
     //  被りがないか判定する
-    let initialState:boolean[]=[...Array<boolean>(10)].map(()=>false);
-    nums.map((n,index)=>{
-        if(n===0)result=false;
+    let initialState:boolean[]=[...Array<boolean>(10)].map(()=>false);  //まだ見つかっていない状態はfalse
+    console.log("判定",initialState)
+    nums.map((n)=>{
+        if(n===0)return;
         
         if(!initialState[n]){
             initialState[n]=true;
         }else{
-            result=true;
+            result=false;
         }
     });
     return result;
